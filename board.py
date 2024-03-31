@@ -22,6 +22,12 @@ class Board:
             state_str += "/"
         return state_str
 
+    def is_game_over(self):
+        # check if either king is missing
+        white_king_present = any(isinstance(piece, King) and piece.color == "white" for row in self.board for piece in row)
+        black_king_present = any(isinstance(piece, King) and piece.color == "black" for row in self.board for piece in row)
+        return not white_king_present or not black_king_present
+
     def setup_board(self):
         # Place black pieces
         self.board[0] = [Rook("black"), Knight("black"), Bishop("black"), Queen("black"),
@@ -89,7 +95,6 @@ class Board:
             raise ValueError("Invalid color")
 
     def move_piece(self, turn, start, end):
-      print(start, end)
       start_row, start_col = start
       end_row, end_col = end
       moving_piece = self.get_piece(start_row, start_col)
@@ -107,3 +112,6 @@ class Board:
           return True, point
 
         return False, point
+
+      else:
+        return False, 0

@@ -92,12 +92,13 @@ def main():
           else:
               print("No legal moves available for black")  # This scenario shouldn't normally happen
 
+      if board.is_game_over():
+        pygame.quit()
+        sys.exit()
+
       draw_board(WIN, board)
       pygame.display.update()
       clock.tick(FPS)
-
-    pygame.quit()
-    sys.exit()
 
 if __name__ == "__main__":
     main()

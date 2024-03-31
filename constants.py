@@ -1,5 +1,5 @@
 # for training
-TRAIN_GAMES = 10
+TRAIN_GAMES = 100000
 EPOCH = 10
 VISUAL_TIME = 1
 
